@@ -1,0 +1,39 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg
+build/
+dist/
+.eggs/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+
+# --- Data policy ---
+# The base synthetic dataset (data/users.csv, data/items.csv,
+# data/ratings.csv) IS committed intentionally: it's generated with a
+# fixed random seed (see data/generate_data.py), is small (~700 KB total),
+# and committing it means a reviewer can clone the repo and go straight to
+# `evaluate` / `recommend` without a required data-generation step.
+#
+# The train/test split and trained model artifacts, by contrast, are pure
+# *derived* outputs of `python -m recsys.cli train` (deterministic given
+# the seed, but regenerated on every training run) - these are ignored so
+# the repo doesn't accumulate stale binary blobs across runs.
+data/ratings_train.csv
+data/ratings_test.csv
+models/*.npz
+models/*.pkl
+models/config.json
+models/metrics.json
